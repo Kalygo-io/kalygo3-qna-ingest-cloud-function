@@ -1,0 +1,4 @@
+.env
+serviceAccounts
+node_modules
+tmp
