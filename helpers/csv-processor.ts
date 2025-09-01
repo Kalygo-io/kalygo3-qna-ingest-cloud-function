@@ -63,6 +63,8 @@ export function parseCSVContent(csvContent: string): Promise<ProcessedRow[]> {
 export async function generateEmbeddingForRow(
   row: ProcessedRow,
   filename: string,
+  user_id: string,
+  user_email: string,
   jwt: string
 ): Promise<VectorData | null> {
   try {
@@ -91,11 +93,13 @@ export async function generateEmbeddingForRow(
     
     // Prepare metadata
     const metadata = {
-      filename: filename,
       row_number: row.rowNumber,
       q: row.question,
       a: row.answer,
       content: row.content,
+      filename: filename,
+      user_id: user_id,
+      user_email: user_email,
       upload_timestamp: Date.now().toString()
     };
     
@@ -119,6 +123,8 @@ export async function generateEmbeddingForRow(
 export async function processCSVFile(
   csvContent: string,
   filename: string,
+  userId: string,
+  userEmail: string,
   jwt: string
 ): Promise<{
   vectors: VectorData[];
@@ -144,7 +150,7 @@ export async function processCSVFile(
 
       console.log(`Processing row ${row.rowNumber}: ${row.question.substring(0, 10)}`);
       
-      const vectorData = await generateEmbeddingForRow(row, filename, jwt);
+      const vectorData = await generateEmbeddingForRow(row, filename, userId, userEmail, jwt);
       
       if (vectorData) {
         vectors.push(vectorData);

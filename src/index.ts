@@ -12,6 +12,7 @@ interface PubSubMessage {
   file_size: number;
   content_type: string;
   user_id: string;
+  user_email: string;
   namespace?: string;
   upload_timestamp: string;
   processing_status: string;
@@ -64,6 +65,7 @@ export const processQnaIngestTopicMessage = async (reqOrEvent: any, contextOrRes
       file_size,
       content_type,
       user_id,
+      user_email,
       namespace = 'similarity_search',
       upload_timestamp,
       processing_status,
@@ -105,6 +107,8 @@ export const processQnaIngestTopicMessage = async (reqOrEvent: any, contextOrRes
     const { vectors, successfulRows, failedRows } = await processCSVFile(
       csvContent,
       filename,
+      user_id,
+      user_email,
       jwt
     );
 

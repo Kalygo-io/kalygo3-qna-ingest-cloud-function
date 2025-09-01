@@ -102,30 +102,7 @@ export async function upsertVectors(
   
   const index = getPineconeIndex();
   
-  // Add diagnostic checks for the index
   try {
-    console.log('🔍 Index Diagnostic Information:');
-    console.log('   Index name:', EnvironmentVariables.PINECONE_ALL_MINILM_L6_V2_INDEX);
-    console.log('   Index object type:', typeof index);
-    console.log('   Index constructor:', index.constructor.name);
-    
-    // Try to get index stats if available
-    if (index.describeIndexStats) {
-      try {
-        const stats = await index.describeIndexStats();
-        console.log('   Index stats:', stats);
-        if (stats.totalVectorCount !== undefined) {
-          console.log('   Total vectors in index:', stats.totalVectorCount);
-        }
-        if (stats.dimension !== undefined) {
-          console.log('   Index dimension:', stats.dimension);
-        }
-              } catch (statsError) {
-          console.log('   Could not get index stats:', statsError instanceof Error ? statsError.message : String(statsError));
-        }
-    }
-    
-    // Show vector details we're about to insert
     console.log('📊 Vectors to be inserted:');
     console.log('   Count:', vectors.length);
     console.log('   First vector ID:', vectors[0]?.id?.substring(0, 12) + '...');
