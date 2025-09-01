@@ -7,3 +7,5 @@ tmp
 *-sa-key.json
 
 /build
+
+# singletons/environmentVariables.ts
