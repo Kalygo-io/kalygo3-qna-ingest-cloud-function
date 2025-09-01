@@ -8,6 +8,8 @@ Cloud Function for ingesting knowledge into a Pinecone Vector DB
 - npm run compile
 - npm run start
 
+## Set up a topic
+
 ## How to deploy to GCF
 
 ```sh
@@ -15,14 +17,14 @@ Cloud Function for ingesting knowledge into a Pinecone Vector DB
 # gcloud services enable cloudfunctions.googleapis.com
 
 # Then deploy the function
-gcloud functions deploy processPubSubMessage \
+gcloud functions deploy process-qna-ingest-topic-message \
 --runtime=nodejs22 \
---trigger-topic=kb-ingest-topic \
+--trigger-topic=qna-ingest-topic \
 --region=us-east1 \
 --memory=1GB \
 --timeout=540s \
 --source ./build \
---entry-point=processPubSubMessage \
+--entry-point=processQnaIngestTopicMessage \
 --gen2
 ```
 

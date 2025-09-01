@@ -19,7 +19,7 @@ interface PubSubMessage {
 }
 
 // Pub/Sub-triggered function
-export const processPubSubMessage = async (reqOrEvent: any, contextOrRes: any) => {
+export const processQnaIngestTopicMessage = async (reqOrEvent: any, contextOrRes: any) => {
   let message = "{}";
   let attributes: Record<string, string> = {};
   
