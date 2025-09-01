@@ -1,8 +1,8 @@
 import { downloadFileFromGCS, fileExistsInGCS } from '../helpers/gcs';
 import { processCSVFile } from '../helpers/csv-processor';
 import { upsertVectors, ProcessingResult } from '../helpers/pinecone';
-import { getSecret } from '@/helpers/get-secret';
-import { EnvironmentVariables } from '@/singletons/environmentVariables';
+import { getSecret } from '../helpers/get-secret';
+import { EnvironmentVariables } from '../singletons/environmentVariables';
 
 interface PubSubMessage {
   file_id: string;
@@ -25,7 +25,7 @@ export const processPubSubMessage = async (reqOrEvent: any, contextOrRes: any) =
   
   try {
 
-    EnvironmentVariables.EMBEDDING_API_URL = await getSecret("EMBEDDING_API_URL");
+    EnvironmentVariables.EMBEDDINGS_API_URL = await getSecret("EMBEDDINGS_API_URL");
     EnvironmentVariables.PINECONE_API_KEY = await getSecret("PINECONE_API_KEY");
     EnvironmentVariables.PINECONE_ALL_MINILM_L6_V2_INDEX = await getSecret("PINECONE_ALL_MINILM_L6_V2_INDEX");
     EnvironmentVariables.KB_INGEST_SA = await getSecret("KB_INGEST_SA");

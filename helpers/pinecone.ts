@@ -22,19 +22,13 @@ export interface ProcessingResult {
  */
 export function initializePinecone(): Pinecone {
   const apiKey = EnvironmentVariables.PINECONE_API_KEY;
-  const environment = EnvironmentVariables.PINECONE_ENVIRONMENT;
   
   if (!apiKey) {
     throw new Error('PINECONE_API_KEY environment variable is required');
   }
   
-  if (!environment) {
-    throw new Error('PINECONE_ENVIRONMENT environment variable is required');
-  }
-  
   console.log('Initializing Pinecone client with:');
   console.log('- API Key:', apiKey.substring(0, 8) + '...');
-  console.log('- Environment:', environment);
   
   try {
     const pinecone = new Pinecone({

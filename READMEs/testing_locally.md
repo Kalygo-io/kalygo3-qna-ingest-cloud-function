@@ -1,0 +1,1 @@
+export GOOGLE_APPLICATION_CREDENTIALS="./kalygo3-kb-ingest-sa-key.json"

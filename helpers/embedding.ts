@@ -22,7 +22,7 @@ export async function fetchEmbedding(jwt: string, text: string): Promise<number[
           'Content-Type': 'application/json',
           'Cookie': `jwt=${jwt}`
         },
-        timeout: 30000 // 30 second timeout
+        timeout: 120000 // 30 second timeout
       }
     );
 
