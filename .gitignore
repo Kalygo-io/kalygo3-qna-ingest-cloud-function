@@ -2,3 +2,8 @@
 serviceAccounts
 node_modules
 tmp
+
+*-sa.json
+*-sa-key.json
+
+/build

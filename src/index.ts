@@ -34,7 +34,20 @@ exports.processPubSubMessage = async (reqOrEvent, contextOrRes) => {
     const parsedMessage = JSON.parse(message);
     console.log("Decoded message:", parsedMessage);
     console.log("Message attributes:", attributes);
-    const { batchUuid, rows, customizations, originalname, email } = parsedMessage;
+    const {
+      file_id,
+      filename,
+      gcs_bucket,
+      gcs_file_path,
+      file_size,
+      content_type,
+      user_id,
+      namespace,
+      upload_timestamp,
+      processing_status
+    } = parsedMessage;
+
+    
 
     // Return for Pub/Sub
     return;
