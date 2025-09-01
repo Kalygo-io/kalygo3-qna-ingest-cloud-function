@@ -39,15 +39,15 @@ curl -X POST http://localhost:8080/ \
 ## Publishing a test message onto the Pub/Sub topic to confirm the Cloud Function gets triggered
 
 ```sh
-gcloud pubsub topics publish kb-ingest-topic \
+gcloud pubsub topics publish qna-ingest-topic \
 --message='{"action":"process","key":"value"}' \
 --attribute=test=true
 ```
 
 ```sh - Watch logs in real-time
-gcloud functions logs tail processPubSubMessage --region=us-east1
+gcloud functions logs tail process-qna-ingest-topic-message --region=us-east1
 ```
 
 ```sh - Or view recent logs
-gcloud functions logs read processPubSubMessage --region=us-east1 --limit=50
+gcloud functions logs read process-qna-ingest-topic-message --region=us-east1 --limit=50
 ```
