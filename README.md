@@ -1,6 +1,6 @@
 # TLDR
 
-Cloud Function for ingesting knowledge into a Pinecone Vector DB
+Cloud Function for ingesting QnA knowledge stored in a .csv into a Pinecone Vector DB
 
 ## How to run this project
 
