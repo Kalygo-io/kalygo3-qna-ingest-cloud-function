@@ -8,7 +8,7 @@
     "debug": "node --inspect node_modules/.bin/functions-framework --source=build/src --target=processQnaIngestTopicMessage",
     "watch": "concurrently \"npm run compile -- --watch\" \"nodemon --watch . --exec npm run debug\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "functions-framework --source=build/src --target=processPubSubMessage"
+    "start": "functions-framework --source=build/src --target=processQnaIngestTopicMessage"
   },
   "keywords": [],
   "author": "",
